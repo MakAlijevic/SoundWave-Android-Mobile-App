@@ -98,6 +98,7 @@
         android:layout_marginTop="8dp"
         android:background="#00FFFFFF"
         android:gravity="left"
+        android:onClick="LoginButton"
         android:shadowColor="#D1B9B9"
         android:text="Log In"
         android:textAllCaps="false"

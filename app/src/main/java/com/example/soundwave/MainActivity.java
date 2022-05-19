@@ -15,7 +15,13 @@ public class MainActivity extends AppCompatActivity {
     }
     public void SignUpButton(View V)
     {
-        Intent intent = new Intent(this,RegistrationActivity.class);
-        startActivity(intent);
+        Intent registrationIntent = new Intent(this,RegistrationActivity.class);
+        startActivity(registrationIntent);
+    }
+
+    public void LoginButton(View V)
+    {
+        Intent loginIntent = new Intent(this,LoginActivity.class);
+        startActivity(loginIntent);
     }
 }

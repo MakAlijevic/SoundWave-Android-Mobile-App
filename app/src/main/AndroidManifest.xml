@@ -10,9 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SoundWave">
         <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
+        <activity
             android:name=".RegistrationActivity"
             android:exported="false" />
-
         <activity
             android:name=".MainActivity"
             android:exported="true"
