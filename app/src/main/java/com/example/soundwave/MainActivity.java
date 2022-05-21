@@ -1,27 +1,83 @@
 package com.example.soundwave;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
+    private BottomNavigationView bottomNavigationView;
+    private ViewPager viewPager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        bottomNavigationView = findViewById(R.id.bottomnavigationview);
+        viewPager = findViewById(R.id.viewpager);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener);
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                bottomNavigationView.getMenu().getItem(position).setChecked(true);
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+
+        });
+
+        setUpAdapter(viewPager);
     }
-    public void SignUpButton(View V)
+    public void setUpAdapter(ViewPager viewPager)
     {
-        Intent registrationIntent = new Intent(this,RegistrationActivity.class);
-        startActivity(registrationIntent);
+        ViewPagerAdapter viewPagerAdapter=new ViewPagerAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+        viewPagerAdapter.addFragment(new HomeFragment());
+        viewPagerAdapter.addFragment(new SearchFragment());
+        viewPagerAdapter.addFragment(new ProfileFragment());
+        viewPager.setAdapter(viewPagerAdapter);
     }
 
-    public void LoginButton(View V)
-    {
-        Intent loginIntent = new Intent(this,LoginActivity.class);
-        startActivity(loginIntent);
-    }
+
+
+    private BottomNavigationView.OnNavigationItemSelectedListener onNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch(item.getItemId()){
+                case(R.id.nav_home):
+                    viewPager.setCurrentItem(0);
+                    return true;
+
+                case(R.id.nav_search):
+                    viewPager.setCurrentItem(1);
+                    return true;
+
+                case(R.id.nav_profile):
+                    viewPager.setCurrentItem(2);
+                    return true;
+
+                default:
+                    return false;
+            }
+
+        }
+    };
+
 }
