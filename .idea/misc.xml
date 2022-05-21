@@ -13,7 +13,7 @@
         <entry key="..\:/Users/cutec/AndroidStudioProjects/SoundWave-Android-Mobile-App/app/src/main/res/layout/activity_home_fragment.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/cutec/AndroidStudioProjects/SoundWave-Android-Mobile-App/app/src/main/res/layout/activity_intro.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/cutec/AndroidStudioProjects/SoundWave-Android-Mobile-App/app/src/main/res/layout/activity_login.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/cutec/AndroidStudioProjects/SoundWave-Android-Mobile-App/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/cutec/AndroidStudioProjects/SoundWave-Android-Mobile-App/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/cutec/AndroidStudioProjects/SoundWave-Android-Mobile-App/app/src/main/res/layout/activity_registration.xml" value="0.33" />
         <entry key="..\:/Users/cutec/AndroidStudioProjects/SoundWave-Android-Mobile-App/app/src/main/res/layout/fragment_home.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/cutec/AndroidStudioProjects/SoundWave-Android-Mobile-App/app/src/main/res/layout/fragment_profile.xml" value="0.36666666666666664" />
@@ -23,6 +23,9 @@
         <entry key="..\:/Users/cutec/AndroidStudioProjects/SoundWave-Android-Mobile-App/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2985" />
       </map>
     </option>
+  </component>
+  <component name="ProjectPlainTextFileTypeManager">
+    <file url="file://$PROJECT_DIR$/app/src/main/res/values/bottom_nav_tab.xml" />
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
