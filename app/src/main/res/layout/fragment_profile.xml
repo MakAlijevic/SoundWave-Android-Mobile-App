@@ -58,7 +58,7 @@
             android:layout_width="196dp"
             android:layout_height="179dp"
             android:layout_marginTop="48dp"
-            android:src="@drawable/emka"
+            android:src="@drawable/background"
             app:layout_constraintEnd_toStartOf="@+id/textView8"
             app:layout_constraintHorizontal_bias="0.475"
             app:layout_constraintStart_toStartOf="parent"

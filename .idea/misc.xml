@@ -3,28 +3,20 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/cutec/AndroidStudioProjects/SoundWave-Android-Mobile-App/app/src/main/res/drawable/circle.xml" value="0.361" />
-        <entry key="..\:/Users/cutec/AndroidStudioProjects/SoundWave-Android-Mobile-App/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.3675" />
-        <entry key="..\:/Users/cutec/AndroidStudioProjects/SoundWave-Android-Mobile-App/app/src/main/res/drawable/ic_baseline_person_outline_24.xml" value="0.3675" />
-        <entry key="..\:/Users/cutec/AndroidStudioProjects/SoundWave-Android-Mobile-App/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.3675" />
-        <entry key="..\:/Users/cutec/AndroidStudioProjects/SoundWave-Android-Mobile-App/app/src/main/res/drawable/ic_icons8_home.xml" value="0.3575" />
+        <entry key="..\:/Users/Korisnik/Desktop/Codes/MobileDev/SoundWave-Android-Mobile-App/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.2985" />
+        <entry key="..\:/Users/Korisnik/Desktop/Codes/MobileDev/SoundWave-Android-Mobile-App/app/src/main/res/drawable/ic_icons8_edit.xml" value="0.2985" />
+        <entry key="..\:/Users/Korisnik/Desktop/Codes/MobileDev/SoundWave-Android-Mobile-App/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2985" />
+        <entry key="..\:/Users/Korisnik/Desktop/Codes/MobileDev/SoundWave-Android-Mobile-App/app/src/main/res/drawable/round_outline.xml" value="0.2985" />
+        <entry key="..\:/Users/Korisnik/Desktop/Codes/MobileDev/SoundWave-Android-Mobile-App/app/src/main/res/drawable/rounded_corner.xml" value="0.2985" />
+        <entry key="..\:/Users/Korisnik/Desktop/Codes/MobileDev/SoundWave-Android-Mobile-App/app/src/main/res/layout/activity_intro.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/Korisnik/Desktop/Codes/MobileDev/SoundWave-Android-Mobile-App/app/src/main/res/layout/activity_login.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/Korisnik/Desktop/Codes/MobileDev/SoundWave-Android-Mobile-App/app/src/main/res/layout/activity_main.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/Korisnik/Desktop/Codes/MobileDev/SoundWave-Android-Mobile-App/app/src/main/res/layout/activity_music_player.xml" value="0.33" />
+        <entry key="..\:/Users/Korisnik/Desktop/Codes/MobileDev/SoundWave-Android-Mobile-App/app/src/main/res/layout/activity_registration.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/Korisnik/Desktop/Codes/MobileDev/SoundWave-Android-Mobile-App/app/src/main/res/layout/fragment_home.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/Korisnik/Desktop/Codes/MobileDev/SoundWave-Android-Mobile-App/app/src/main/res/layout/fragment_profile.xml" value="0.358695652173913" />
         <entry key="..\:/Users/cutec/AndroidStudioProjects/SoundWave-Android-Mobile-App/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2985" />
-        <entry key="..\:/Users/cutec/AndroidStudioProjects/SoundWave-Android-Mobile-App/app/src/main/res/drawable/image.xml" value="0.361" />
-        <entry key="..\:/Users/cutec/AndroidStudioProjects/SoundWave-Android-Mobile-App/app/src/main/res/drawable/round_outline.xml" value="0.361" />
-        <entry key="..\:/Users/cutec/AndroidStudioProjects/SoundWave-Android-Mobile-App/app/src/main/res/layout-w1240dp/activity_registration.xml" value="0.23560910307898258" />
-        <entry key="..\:/Users/cutec/AndroidStudioProjects/SoundWave-Android-Mobile-App/app/src/main/res/layout-w936dp/activity_registration.xml" value="0.25341530054644806" />
-        <entry key="..\:/Users/cutec/AndroidStudioProjects/SoundWave-Android-Mobile-App/app/src/main/res/layout/activity_edit_profile.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/cutec/AndroidStudioProjects/SoundWave-Android-Mobile-App/app/src/main/res/layout/activity_home_fragment.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/cutec/AndroidStudioProjects/SoundWave-Android-Mobile-App/app/src/main/res/layout/activity_intro.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/cutec/AndroidStudioProjects/SoundWave-Android-Mobile-App/app/src/main/res/layout/activity_login.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/cutec/AndroidStudioProjects/SoundWave-Android-Mobile-App/app/src/main/res/layout/activity_main.xml" value="0.264" />
-        <entry key="..\:/Users/cutec/AndroidStudioProjects/SoundWave-Android-Mobile-App/app/src/main/res/layout/activity_registration.xml" value="0.33" />
-        <entry key="..\:/Users/cutec/AndroidStudioProjects/SoundWave-Android-Mobile-App/app/src/main/res/layout/fragment_home.xml" value="0.264" />
-        <entry key="..\:/Users/cutec/AndroidStudioProjects/SoundWave-Android-Mobile-App/app/src/main/res/layout/fragment_profile.xml" value="0.264" />
-        <entry key="..\:/Users/cutec/AndroidStudioProjects/SoundWave-Android-Mobile-App/app/src/main/res/layout/fragment_search.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/cutec/AndroidStudioProjects/SoundWave-Android-Mobile-App/app/src/main/res/layout/registration_layout.xml" value="0.33605072463768115" />
-        <entry key="..\:/Users/cutec/AndroidStudioProjects/SoundWave-Android-Mobile-App/app/src/main/res/menu/bottom_navigation_bar_menu.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/cutec/AndroidStudioProjects/SoundWave-Android-Mobile-App/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2985" />
+        <entry key="..\:/Users/cutec/AndroidStudioProjects/SoundWave-Android-Mobile-App/app/src/main/res/layout/activity_main.xml" value="0.31657608695652173" />
       </map>
     </option>
   </component>
