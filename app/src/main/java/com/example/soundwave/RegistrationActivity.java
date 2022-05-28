@@ -101,14 +101,17 @@ public class RegistrationActivity extends AppCompatActivity {
 
 
 
-    public void registerUser(View view) {
+    public void setUpProfile(View view) {
 
         if(!validateUsername() | !validateEmail() | !validatePassword() | !validateConfirmPassword()){
             return;
         }
         else
         {
-            Intent intent=new Intent(this, LoginActivity.class);
+            Intent intent=new Intent(this, Registration2Activity.class);
+            intent.putExtra("username", username.getText().toString());
+            intent.putExtra("password", password.getText().toString());
+            intent.putExtra("email", email.getText().toString());
             startActivity(intent);
         }
 
