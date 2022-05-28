@@ -10,10 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SoundWave">
         <activity
-            android:name=".MusicPlayerActivity"
+            android:name=".Registration2Activity"
             android:exported="false" />
         <activity
-            android:name=".EditProfile"
+            android:name=".MusicPlayerActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

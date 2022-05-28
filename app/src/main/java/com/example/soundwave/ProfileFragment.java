@@ -23,10 +23,15 @@ public class ProfileFragment extends Fragment {
     private Button save,cancel,photo;
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v= inflater.inflate(R.layout.fragment_profile, container,false);
+        MainActivity activity= (MainActivity) getActivity();
+        String getUsername = activity.getUsername();
+        String getEmail = activity.getEmail();
         ImageView edit = (ImageView) v.findViewById(R.id.edit);
         about=(EditText) v.findViewById(R.id.aboutinput);
         username=(EditText) v.findViewById(R.id.usernameinput);
+        username.setText(getUsername);
         email=(EditText) v.findViewById(R.id.emailinput);
+        email.setText(getEmail);
         save=(Button) v.findViewById(R.id.buttonsave);
         cancel=(Button) v.findViewById(R.id.buttoncancel);
         photo=(Button) v.findViewById(R.id.buttonphoto);

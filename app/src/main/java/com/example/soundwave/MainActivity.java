@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         bottomNavigationView = findViewById(R.id.bottomnavigationview);
         viewPager = findViewById(R.id.viewpager);
 
@@ -79,5 +80,15 @@ public class MainActivity extends AppCompatActivity {
 
         }
     };
+
+    public String getUsername() {
+        String username;
+        return username=getIntent().getStringExtra("username");
+    }
+
+    public String getEmail() {
+        String email;
+        return email=getIntent().getStringExtra("email");
+    }
 
 }
