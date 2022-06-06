@@ -1,5 +1,7 @@
 package com.example.soundwave;
 
+import android.net.Uri;
+
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -20,12 +22,12 @@ public class User {
     @ColumnInfo(name="profilePicture")
     private String profilePicture;
 
-    public User(String username, String email, String password, String aboutMe, String profilePicture) {
+    public User(String username, String email, String password){
         this.username = username;
         this.email = email;
         this.password = password;
-        this.aboutMe = aboutMe;
-        this.profilePicture = profilePicture;
+       // this.aboutMe = aboutMe;
+        //this.profilePicture = profilePicture;
     }
 
     public long getId() {
