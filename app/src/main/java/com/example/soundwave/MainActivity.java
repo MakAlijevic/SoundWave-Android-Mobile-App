@@ -90,5 +90,10 @@ public class MainActivity extends AppCompatActivity {
         String email;
         return email=getIntent().getStringExtra("email");
     }
+  public String getProfilePicture()
+   {
+       String profilePicture;
+     return profilePicture=getIntent().getStringExtra("profilePhoto");
+   }
 
 }

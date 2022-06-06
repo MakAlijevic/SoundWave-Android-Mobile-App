@@ -1,6 +1,7 @@
 package com.example.soundwave;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.KeyCharacterMap;
@@ -21,17 +22,21 @@ import androidx.fragment.app.Fragment;
 public class ProfileFragment extends Fragment {
     private EditText about,username,email;
     private Button save,cancel,photo;
+    private ImageView profilePicture;
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v= inflater.inflate(R.layout.fragment_profile, container,false);
         MainActivity activity= (MainActivity) getActivity();
         String getUsername = activity.getUsername();
         String getEmail = activity.getEmail();
+       //String getprofilePicture=activity.getProfilePicture();
         ImageView edit = (ImageView) v.findViewById(R.id.edit);
         about=(EditText) v.findViewById(R.id.aboutinput);
         username=(EditText) v.findViewById(R.id.usernameinput);
         username.setText(getUsername);
         email=(EditText) v.findViewById(R.id.emailinput);
         email.setText(getEmail);
+        // Uri photoUri = Uri.parse(getprofilePicture);
+        // profilePicture.setImageURI(photoUri);
         save=(Button) v.findViewById(R.id.buttonsave);
         cancel=(Button) v.findViewById(R.id.buttoncancel);
         photo=(Button) v.findViewById(R.id.buttonphoto);
@@ -67,5 +72,6 @@ public class ProfileFragment extends Fragment {
 
 
     }
+
 
 }

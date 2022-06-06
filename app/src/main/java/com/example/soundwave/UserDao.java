@@ -17,4 +17,7 @@ public interface UserDao {
 
     @Query("SELECT * from User WHERE username=(:username) and password=(:password)")
     User login(String username,String password);
+
+    @Query("SELECT profilePicture from User WHERE username=(:username)")
+    String getPhoto(String username);
 }
