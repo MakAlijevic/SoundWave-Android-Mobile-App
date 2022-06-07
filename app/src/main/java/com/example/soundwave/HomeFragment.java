@@ -9,6 +9,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.ViewFlipper;
 
 import androidx.annotation.NonNull;
@@ -18,10 +19,14 @@ import androidx.fragment.app.Fragment;
 
 public class HomeFragment extends Fragment {
     private ViewFlipper viewFlipper;
+    private TextView welcomeUsername;
     private ImageButton next,prev,playButton;
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v= inflater.inflate(R.layout.fragment_home, container,false);
         viewFlipper =v.findViewById(R.id.simpleViewFlipper);
+        welcomeUsername=v.findViewById(R.id.welcomeUsername);
+        MainActivity activity= (MainActivity) getActivity();
+        welcomeUsername.setText(activity.getUsername());
         next=v.findViewById(R.id.next);
         prev=v.findViewById(R.id.prev);
         playButton=v.findViewById(R.id.playButton);

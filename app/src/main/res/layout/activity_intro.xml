@@ -6,14 +6,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:background="@drawable/bg"
     tools:context=".IntroActivity">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="281dp"
         android:layout_height="54dp"
-        android:layout_marginTop="216dp"
+        android:layout_marginTop="200dp"
         android:fontFamily="@font/play"
         android:gravity="center"
         android:text="SoundWave"
@@ -55,7 +55,7 @@
         android:textColor="#FFFFFF"
         android:textColorHighlight="#16506A"
         android:textSize="20sp"
-        app:backgroundTint="#6C6D81"
+        app:backgroundTint="#59FF6AB7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
