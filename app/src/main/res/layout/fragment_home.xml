@@ -164,6 +164,7 @@
                         android:layout_marginRight="26dp"
                         android:layout_marginBottom="21dp"
                         android:background="#00000000"
+                        android:onClick="playSongIntent"
                         android:src="@android:drawable/ic_media_play"
                         app:backgroundTintMode="add"
                         app:layout_constraintBottom_toBottomOf="@+id/album1"

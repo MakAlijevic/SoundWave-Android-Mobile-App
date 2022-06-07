@@ -95,5 +95,16 @@ public class MainActivity extends AppCompatActivity {
        String profilePicture;
      return profilePicture=getIntent().getStringExtra("profilePhoto");
    }
+    public String getAboutMe()
+    {
+        String aboutMe;
+        return aboutMe=getIntent().getStringExtra("aboutme");
+    }
+    public String getPassword()
+    {
+        String password;
+        return password=getIntent().getStringExtra("password");
+    }
+
 
 }
