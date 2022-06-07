@@ -12,7 +12,7 @@
         style="@style/Widget.Material3.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="217dp"
         android:fontFamily="@font/play"
         android:onClick="RegisterButton"
         android:shadowColor="#000000"
@@ -21,10 +21,12 @@
         android:textColorHighlight="#16506A"
         android:textSize="20sp"
         app:backgroundTint="#6C6D81"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/aboutMe"
+        app:layout_constraintTop_toBottomOf="@+id/female1"
+        app:layout_constraintVertical_bias="0.0"
         app:rippleColor="#154D7A"
         app:strokeColor="#FFFEFE" />
 
@@ -42,56 +44,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/profilePicture"
-        android:layout_width="170dp"
-        android:layout_height="162dp"
-        android:layout_marginTop="32dp"
-        android:src="@drawable/user"
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="215dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/play"
+        android:gravity="center"
+        android:text="CHOOSE YOUR AVATAR"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
-    <TextView
-        android:id="@+id/textView20"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ImageButton
+        android:id="@+id/female1"
+        android:layout_width="158dp"
+        android:layout_height="117dp"
         android:layout_marginTop="44dp"
-        android:fontFamily="@font/play"
-        android:text="Tell something about yourself"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
+        android:background="#00FFFFFF"
+        android:scaleType="centerInside"
+        android:tag="@drawable/female1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.485"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button5" />
-
-    <Button
-        android:id="@+id/button5"
-        style="@android:style/Widget.DeviceDefault.Button.Borderless.Colored"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/play"
-        android:onClick="openGallery"
-        android:text="Choose your profile picture"
-        android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profilePicture" />
-
-    <EditText
-        android:id="@+id/aboutMe"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:ems="10"
-        android:hint="Type something..."
-        android:inputType="textPersonName"
-        android:textColorHint="#9C9C9C"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView20" />
+        app:layout_constraintTop_toBottomOf="@+id/textView19"
+        app:srcCompat="@drawable/female1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

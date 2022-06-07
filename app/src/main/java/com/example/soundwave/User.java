@@ -26,8 +26,7 @@ public class User {
         this.username = username;
         this.email = email;
         this.password = password;
-       // this.aboutMe = aboutMe;
-        //this.profilePicture = profilePicture;
+
     }
 
     public long getId() {

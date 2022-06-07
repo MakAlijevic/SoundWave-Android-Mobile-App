@@ -10,7 +10,8 @@ import android.widget.EditText;
 public class LoginActivity extends AppCompatActivity {
 
     EditText username,password;
-   // private String photo;
+    //private String photo;
+    private String aboutMe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,8 +19,8 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         username=findViewById(R.id.username);
         password=findViewById(R.id.password);
-      //  photo= getIntent().getStringExtra("profilePhoto");
-
+        //photo= getIntent().getStringExtra("profilePhoto");
+        String aboutMe=getIntent().getStringExtra("aboutme");
     }
     public void LogIn(View v)
     {
@@ -27,10 +28,11 @@ public class LoginActivity extends AppCompatActivity {
        User user= userDao.login(username.getText().toString(),password.getText().toString());
        String username= user.getUsername();
        String email=user.getEmail();
+       String password=user.getPassword();
         Intent intent=new Intent(this, MainActivity.class);
         intent.putExtra("username",username);
         intent.putExtra("email",email);
-        //intent.putExtra("profilePicture",photo);
+        intent.putExtra("password",password);
         startActivity(intent);
     }
 

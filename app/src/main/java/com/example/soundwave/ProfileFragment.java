@@ -1,6 +1,8 @@
 package com.example.soundwave;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -14,29 +16,37 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.MainThread;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 public class ProfileFragment extends Fragment {
+    private TextView usernamelarge;
     private EditText about,username,email;
-    private Button save,cancel,photo;
+    private Button save,cancel,photo,logout;
     private ImageView profilePicture;
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v= inflater.inflate(R.layout.fragment_profile, container,false);
         MainActivity activity= (MainActivity) getActivity();
         String getUsername = activity.getUsername();
         String getEmail = activity.getEmail();
-       //String getprofilePicture=activity.getProfilePicture();
+       // String getprofilePicture=activity.getProfilePicture();
+        String getPassword=activity.getPassword();
         ImageView edit = (ImageView) v.findViewById(R.id.edit);
         about=(EditText) v.findViewById(R.id.aboutinput);
         username=(EditText) v.findViewById(R.id.usernameinput);
+        usernamelarge=(TextView) v.findViewById(R.id.textView8);
+        logout=v.findViewById(R.id.logout);
         username.setText(getUsername);
+        usernamelarge.setText(getUsername);
         email=(EditText) v.findViewById(R.id.emailinput);
         email.setText(getEmail);
-        // Uri photoUri = Uri.parse(getprofilePicture);
-        // profilePicture.setImageURI(photoUri);
+     //   Context context = profilePicture.getContext();
+       // int id = context.getResources().getIdentifier("getprofilePicture", "drawable", context.getPackageName());
+       // Drawable drawable = getResources().getDrawable(id);
+       // profilePicture.setImageDrawable(drawable);
         save=(Button) v.findViewById(R.id.buttonsave);
         cancel=(Button) v.findViewById(R.id.buttoncancel);
         photo=(Button) v.findViewById(R.id.buttonphoto);
@@ -49,12 +59,10 @@ public class ProfileFragment extends Fragment {
                 about.setEnabled(true);
                 username.setEnabled(true);
                 email.setEnabled(true);
-                about.getText().clear();
-                username.getText().clear();
-                email.getText().clear();
                 save.setVisibility(save.VISIBLE);
                 cancel.setVisibility(cancel.VISIBLE);
                 photo.setVisibility(photo.VISIBLE);
+                logout.setVisibility(logout.INVISIBLE);
             }
         });
         cancel.setOnClickListener(new View.OnClickListener() {
@@ -66,6 +74,32 @@ public class ProfileFragment extends Fragment {
                 save.setVisibility(save.INVISIBLE);
                 cancel.setVisibility(cancel.INVISIBLE);
                 photo.setVisibility(photo.INVISIBLE);
+                logout.setVisibility(logout.VISIBLE);
+            }
+        });
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                UserDao userDao=SoundWaveDatabase.getInstance(getActivity()).userDao();
+                User user=userDao.login(getUsername,getPassword);
+                user.setUsername(username.getText().toString());
+                user.setAboutMe(about.getText().toString());
+                user.setEmail(email.getText().toString());
+                userDao.updateUser(user);
+                username.setText(username.getText().toString());
+                email.setText(email.getText().toString());
+                about.setText(about.getText().toString());
+                save.setVisibility(save.INVISIBLE);
+                cancel.setVisibility(cancel.INVISIBLE);
+                photo.setVisibility(photo.INVISIBLE);
+                logout.setVisibility(logout.VISIBLE);
+            }
+        });
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getContext(),IntroActivity.class);
+                startActivity(intent);
             }
         });
         return v;
