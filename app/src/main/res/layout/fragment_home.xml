@@ -11,22 +11,22 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/background"
+        android:background="@drawable/bg"
         tools:ignore="MissingClass">
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="258dp"
             android:layout_height="65dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="36dp"
             android:fontFamily="@font/play"
             android:gravity="center"
             android:text="SoundWave"
             android:textColor="#FFFFFF"
-            android:textSize="44sp"
+            android:textSize="40sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.084"
+            app:layout_constraintHorizontal_bias="0.104"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -34,6 +34,8 @@
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
             android:layout_marginTop="32dp"
             android:fontFamily="@font/play"
             android:text="Featured"
@@ -48,6 +50,8 @@
             android:id="@+id/textView16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="284dp"
             android:fontFamily="@font/play"
@@ -65,11 +69,13 @@
             android:id="@+id/textView13"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/play"
-            android:text="Welcome back "
-            android:textColor="#8F8F8F"
-            android:textSize="25sp"
+            android:text="Welcome back, "
+            android:textColor="#9EFFFFFF"
+            android:textSize="23sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.141"
             app:layout_constraintStart_toStartOf="parent"
@@ -98,7 +104,7 @@
                 android:layout_marginTop="30dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginRight="135dp"
-                app:cardBackgroundColor="#8C000000"
+                app:cardBackgroundColor="#5715020C"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView3">
@@ -200,7 +206,7 @@
                 android:layout_marginTop="30dp"
                 android:layout_marginEnd="135dp"
                 android:layout_marginRight="135dp"
-                app:cardBackgroundColor="#8D000000"
+                app:cardBackgroundColor="#5715020C"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView3">
@@ -300,7 +306,7 @@
                 android:layout_marginTop="30dp"
                 android:layout_marginEnd="135dp"
                 android:layout_marginRight="135dp"
-                app:cardBackgroundColor="#8D000000"
+                app:cardBackgroundColor="#5715020C"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView3">
@@ -392,7 +398,6 @@
             </androidx.cardview.widget.CardView>
 
 
-
         </ViewFlipper>
 
         <ImageButton
@@ -426,6 +431,19 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/welcomeUsername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/play"
+            android:textColor="#9EFFFFFF"
+            android:textSize="23sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.023"
+            app:layout_constraintStart_toEndOf="@+id/textView13"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="500dp"
-        android:background="@drawable/background">
+        android:background="@drawable/bg">
 
         <ImageView
             android:id="@+id/edit"
@@ -78,7 +78,7 @@
             android:textColorHighlight="#16506A"
             android:textSize="14sp"
             android:visibility="invisible"
-            app:backgroundTint="#6C6D81"
+            app:backgroundTint="#59FF6AB7"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.063"
             app:layout_constraintStart_toStartOf="parent"
@@ -209,7 +209,7 @@
             android:textColorHighlight="#16506A"
             android:textSize="18sp"
             android:visibility="invisible"
-            app:backgroundTint="#6C6D81"
+            app:backgroundTint="#59FF6AB7"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/buttonsave"
             app:layout_constraintHorizontal_bias="0.5"
@@ -234,7 +234,7 @@
             android:textColorHighlight="#16506A"
             android:textSize="18sp"
             android:visibility="invisible"
-            app:backgroundTint="#6C6D81"
+            app:backgroundTint="#59FF6AB7"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -292,7 +292,7 @@
             android:textColor="#FFFFFF"
             android:textColorHighlight="#16506A"
             android:textSize="18sp"
-            app:backgroundTint="#6C6D81"
+            app:backgroundTint="#59FF6AB7"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/emailinput" />

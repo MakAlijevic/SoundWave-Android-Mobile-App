@@ -40,14 +40,14 @@ public class MusicPlayerActivity extends AppCompatActivity {
         });
     }
     public void playSong() {
-        final String audioURL = " https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3";
+        final String audioURL="https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3";
 
         mediaPlayer = new MediaPlayer();
         mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
 
         try {
             mediaPlayer.setDataSource(audioURL);
-            mediaPlayer.prepareAsync();
+            mediaPlayer.prepare();
             mediaPlayer.start();
         } catch (IOException e){
             e.printStackTrace();

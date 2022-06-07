@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:background="@drawable/bg"
     tools:context=".Registration2Activity">
 
     <Button
@@ -20,7 +20,7 @@
         android:textColor="#FFFFFF"
         android:textColorHighlight="#16506A"
         android:textSize="20sp"
-        app:backgroundTint="#6C6D81"
+        app:backgroundTint="#59FF6AB7"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
