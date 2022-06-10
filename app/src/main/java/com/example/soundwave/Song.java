@@ -12,12 +12,15 @@ public class Song {
     private String title;
     private String length;
     private String songName;
+    private int pictureID;
 
-    public Song(String title,String artist, String length,String songName) {
+
+    public Song(String title, String artist, String length, String songName, int pictureID) {
         this.title = title;
         this.artist=artist;
         this.length = length;
         this.songName=songName;
+        this.pictureID=pictureID;
     }
 
     public String getSongName() {
@@ -58,6 +61,14 @@ public class Song {
 
     public void setLength(String length) {
         this.length = length;
+    }
+
+    public int getPictureID() {
+        return pictureID;
+    }
+
+    public void setPictureID(int pictureID) {
+        this.pictureID = pictureID;
     }
 
 }

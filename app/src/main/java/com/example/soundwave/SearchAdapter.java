@@ -10,12 +10,11 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class Adapter extends BaseAdapter {
-
+public class SearchAdapter extends BaseAdapter {
     private List<Song> songList;
     private Context context;
 
-    public Adapter(Context context, List<Song> songList){
+    public SearchAdapter(Context context, List<Song> songList){
         this.context = context;
         this.songList = songList;
     }
@@ -40,14 +39,14 @@ public class Adapter extends BaseAdapter {
         view = inflater.inflate(R.layout.listview_layout, viewGroup, false);
         Song song = (Song) getItem(i);
         ImageView picture = view.findViewById(R.id.picture);
-        TextView songArtist = view.findViewById(R.id.SongArtist);
-        TextView songName=view.findViewById(R.id.SongName);
-        TextView length = view.findViewById(R.id.length);
+        TextView songArtist = view.findViewById(R.id.search_artist);
+        TextView songName=view.findViewById(R.id.search_title);
+        TextView length = view.findViewById(R.id.search_length);
 
+        picture.setImageResource(song.getPictureID());
         songArtist.setText(song.getArtist());
         length.setText(song.getLength());
         songName.setText(song.getSongName());
-        picture.setImageResource(song.getPictureID());
         return view;
     }
 }

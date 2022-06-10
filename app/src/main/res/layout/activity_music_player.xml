@@ -8,7 +8,7 @@
     tools:context=".MusicPlayerActivity">
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/music_player_picture"
         android:layout_width="327dp"
         android:layout_height="316dp"
         android:layout_marginTop="120dp"
@@ -18,12 +18,11 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/textView15"
+        android:id="@+id/music_player_title"
         android:layout_width="327dp"
         android:layout_height="0dp"
         android:layout_marginTop="480dp"
         android:fontFamily="@font/play"
-        android:text="//Song name"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,7 +42,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView15" />
+        app:layout_constraintTop_toBottomOf="@+id/music_player_title" />
 
     <TextView
         android:id="@+id/textView17"
@@ -59,14 +58,13 @@
         app:layout_constraintTop_toBottomOf="@+id/seekBar" />
 
     <TextView
-        android:id="@+id/textView18"
+        android:id="@+id/music_player_length"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="44dp"
         android:layout_marginRight="44dp"
         android:fontFamily="@font/play"
-        android:text="//fulltime"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seekBar" />

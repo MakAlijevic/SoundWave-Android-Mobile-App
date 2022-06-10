@@ -22,8 +22,6 @@ public class IntroActivity extends AppCompatActivity {
         Song song = songDao.getSong("Charlie Puth - Light Switch.mp3");
         if (song != null) {
             songDao.deleteAll();
-            Toast toast= Toast.makeText(this,"Izbriso",Toast.LENGTH_LONG);
-            toast.show();
         }
         loadSongs();
 
@@ -41,13 +39,13 @@ public class IntroActivity extends AppCompatActivity {
 
     public void loadSongs() {
         SongDao songDao = SoundWaveDatabase.getInstance(this).songDao();
-        Song song1 = new Song("Charlie Puth - Light Switch.mp3", "Charlie Puth", "03:40", "Light Switch");
+        Song song1 = new Song("Charlie Puth - Light Switch.mp3", "Charlie Puth", "03:40", "Light Switch", R.drawable.edsheeran);
         songDao.addSong(song1);
 
-        Song song2 = new Song("Charlie Puth - We Dont Talk Anymore.mp3", "Charlie Puth", "03:03", "We Dont Talk Anymore");
+        Song song2 = new Song("Charlie Puth - We Dont Talk Anymore.mp3", "Charlie Puth", "03:03", "We Dont Talk Anymore", R.drawable.kendrick);
         songDao.addSong(song2);
 
-        Song song3 = new Song("Coldplay X BTS - My Universe.mp3", "Coldplay", "03:03", "My Universe");
+        Song song3 = new Song("Coldplay X BTS - My Universe.mp3", "Coldplay", "03:03", "My Universe", R.drawable.asitwas);
         songDao.addSong(song3);
 
     }

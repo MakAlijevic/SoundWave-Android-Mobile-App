@@ -10,7 +10,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import java.util.concurrent.Executors;
 
-@Database(entities = {User.class,Song.class},version = 4, exportSchema = false)
+@Database(entities = {User.class,Song.class},version = 5, exportSchema = false)
 public abstract class SoundWaveDatabase extends RoomDatabase {
 
     public abstract UserDao userDao();
