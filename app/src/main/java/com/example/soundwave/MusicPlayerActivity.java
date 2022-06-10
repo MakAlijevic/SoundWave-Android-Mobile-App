@@ -46,7 +46,7 @@ public class MusicPlayerActivity extends AppCompatActivity {
         AssetFileDescriptor afd;
         String title = getIntent().getStringExtra("title");
         SongDao songDao = SoundWaveDatabase.getInstance(this).songDao();
-        Song song = songDao.getSong(title + ".mp3");
+        Song song = songDao.getSong(title);
 
 
 

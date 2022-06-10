@@ -8,12 +8,32 @@ public class Song {
 
     @PrimaryKey(autoGenerate = true)
     private long id;
+    private String artist;
     private String title;
     private String length;
+    private String songName;
 
-    public Song(String title, String length) {
+    public Song(String title,String artist, String length,String songName) {
         this.title = title;
+        this.artist=artist;
         this.length = length;
+        this.songName=songName;
+    }
+
+    public String getSongName() {
+        return songName;
+    }
+
+    public void setSongName(String songName) {
+        this.songName = songName;
+    }
+
+    public String getArtist() {
+        return artist;
+    }
+
+    public void setArtist(String artist) {
+        this.artist = artist;
     }
 
     public long getId() {
@@ -39,4 +59,5 @@ public class Song {
     public void setLength(String length) {
         this.length = length;
     }
+
 }

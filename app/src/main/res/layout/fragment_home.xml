@@ -46,6 +46,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
+
         <TextView
             android:id="@+id/textView16"
             android:layout_width="wrap_content"
@@ -60,10 +61,10 @@
             android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.364"
+            app:layout_constraintHorizontal_bias="0.333"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/simpleViewFlipper" />
-
+            app:layout_constraintTop_toBottomOf="@+id/simpleViewFlipper"
+            app:layout_constraintVertical_bias="0.033" />
 
         <TextView
             android:id="@+id/textView13"
@@ -316,7 +317,7 @@
                     android:layout_height="match_parent">
 
                     <EditText
-                        android:id="@+id/duration3"
+                        android:id="@+id/length"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
@@ -328,11 +329,11 @@
                         android:text="03:05"
                         android:textColor="#FFFFFF"
                         android:textSize="14sp"
-                        app:layout_constraintStart_toEndOf="@+id/album3"
-                        app:layout_constraintTop_toBottomOf="@+id/title3" />
+                        app:layout_constraintStart_toEndOf="@+id/albumphoto"
+                        app:layout_constraintTop_toBottomOf="@+id/SongName" />
 
                     <ImageView
-                        android:id="@+id/album3"
+                        android:id="@+id/albumphoto"
                         android:layout_width="110sp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
@@ -345,7 +346,7 @@
                         tools:ignore="VectorDrawableCompat" />
 
                     <TextView
-                        android:id="@+id/artist3"
+                        android:id="@+id/SongArtist"
                         android:layout_width="0dp"
                         android:layout_height="35dp"
                         android:layout_marginStart="8dp"
@@ -357,11 +358,11 @@
                         android:textColor="@color/white"
                         android:textSize="22sp"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/album3"
+                        app:layout_constraintStart_toEndOf="@+id/albumphoto"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/title3"
+                        android:id="@+id/SongName"
                         android:layout_width="wrap_content"
                         android:layout_height="20dp"
                         android:layout_marginStart="8dp"
@@ -373,11 +374,11 @@
                         android:textColor="@color/white"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toEndOf="@+id/album3"
-                        app:layout_constraintTop_toBottomOf="@+id/artist3" />
+                        app:layout_constraintStart_toEndOf="@+id/albumphoto"
+                        app:layout_constraintTop_toBottomOf="@+id/SongArtist" />
 
                     <ImageButton
-                        android:id="@+id/playButton3"
+                        android:id="@+id/playSong"
                         android:layout_width="52dp"
                         android:layout_height="43dp"
                         android:layout_marginStart="32dp"
@@ -389,10 +390,10 @@
                         android:background="#00000000"
                         android:src="@android:drawable/ic_media_play"
                         app:backgroundTintMode="add"
-                        app:layout_constraintBottom_toBottomOf="@+id/album3"
-                        app:layout_constraintEnd_toEndOf="@+id/album3"
-                        app:layout_constraintStart_toStartOf="@+id/album3"
-                        app:layout_constraintTop_toTopOf="@+id/album3" />
+                        app:layout_constraintBottom_toBottomOf="@+id/albumphoto"
+                        app:layout_constraintEnd_toEndOf="@+id/albumphoto"
+                        app:layout_constraintStart_toStartOf="@+id/albumphoto"
+                        app:layout_constraintTop_toTopOf="@+id/albumphoto" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
@@ -444,6 +445,21 @@
             app:layout_constraintHorizontal_bias="0.023"
             app:layout_constraintStart_toEndOf="@+id/textView13"
             app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <ListView
+            android:id="@+id/listview"
+            android:layout_width="408dp"
+            android:layout_height="473dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="1dp"
+            android:layout_marginRight="1dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

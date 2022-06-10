@@ -10,9 +10,11 @@ import java.util.List;
 @Dao
 public interface SongDao {
 
-
     @Query("SELECT * FROM Song")
     List<Song> getAll();
+
+    @Query("SELECT * FROM Song LIMIT 3")
+    List<Song> getFiveSongs();
 
     @Insert
     void addSong(Song song);
