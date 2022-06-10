@@ -2,11 +2,11 @@ package com.example.soundwave;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.res.AssetFileDescriptor;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -22,7 +22,7 @@ public class MusicPlayerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_music_player);
 
-        btnPlayButton = findViewById(R.id.playButton);
+        btnPlayButton = findViewById(R.id.playButton1);
         btnPauseButton = findViewById(R.id.nextButton);
 
         btnPlayButton.setOnClickListener(new View.OnClickListener() {
@@ -40,13 +40,20 @@ public class MusicPlayerActivity extends AppCompatActivity {
         });
     }
     public void playSong() {
-        final String audioURL="https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3";
 
         mediaPlayer = new MediaPlayer();
         mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+        AssetFileDescriptor afd;
+        String title = getIntent().getStringExtra("title");
+        SongDao songDao = SoundWaveDatabase.getInstance(this).songDao();
+        Song song = songDao.getSong(title + ".mp3");
+
+
 
         try {
-            mediaPlayer.setDataSource(audioURL);
+            afd = getApplicationContext().getAssets().openFd(song.getTitle());
+            mediaPlayer.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
+            afd.close();
             mediaPlayer.prepare();
             mediaPlayer.start();
         } catch (IOException e){
