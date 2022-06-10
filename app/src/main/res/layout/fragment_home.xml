@@ -160,7 +160,7 @@
 
 
                     <ImageButton
-                        android:id="@+id/playButton"
+                        android:id="@+id/playButton1"
                         android:layout_width="52dp"
                         android:layout_height="43dp"
                         android:layout_marginStart="32dp"
