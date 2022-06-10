@@ -22,6 +22,9 @@ public interface SongDao {
     @Query("SELECT * FROM Song WHERE title=(:title)")
     Song getSong(String title);
 
+    @Query("SELECT * FROM Song WHERE id=(:id)")
+    Song getID(long id);
+
     @Query("DELETE FROM Song")
     void deleteAll();
 

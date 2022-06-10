@@ -54,6 +54,7 @@ public class HomeFragment extends Fragment {
                 Song song=(Song) adapterView.getItemAtPosition(i);
                 String title=song.getTitle();
                 Intent intent = new Intent(getContext(), MusicPlayerActivity.class);
+                intent.putExtra("id",song.getId());
                 intent.putExtra("title", title);
                 startActivity(intent);
             }
