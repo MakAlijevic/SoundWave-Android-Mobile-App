@@ -24,7 +24,9 @@ public class MusicPlayerActivity extends AppCompatActivity {
     private AssetFileDescriptor afd;
     private int currentlength;
     private long id;
-    private long startingid;
+    private Song firstSong = null;
+    private int SongIndex;
+    List<Song> songs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +34,6 @@ public class MusicPlayerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_music_player);
 
         id = getIntent().getLongExtra("id",0);
-        startingid=id;
         SongDao songDao = SoundWaveDatabase.getInstance(this).songDao();
         Song song = songDao.getID(id);
         btnPlayButton = findViewById(R.id.playButton1);
@@ -48,9 +49,18 @@ public class MusicPlayerActivity extends AppCompatActivity {
         length.setText(song.getLength());
         picture.setImageResource(song.getPictureID());
 
-        List<Song> songs = songDao.getAll();
+        songs = songDao.getAll();
 
-        playSong(id);
+        for (Song s : songs) {
+            if (s.getSongName().equals(song.getSongName())) {
+                Song firstSong = s;
+                SongIndex = songs.indexOf(firstSong);
+                break;
+            }
+        }
+
+
+        playSong(SongIndex);
         btnPlayButton.setVisibility(View.INVISIBLE);
 
 
@@ -58,7 +68,7 @@ public class MusicPlayerActivity extends AppCompatActivity {
         btnPlayButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                playSong(id);
+                playSong(SongIndex);
                 btnPlayButton.setVisibility(View.INVISIBLE);
             }
         });
@@ -76,12 +86,11 @@ public class MusicPlayerActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try {
-                    if(id==startingid+songs.size()-1)
-                    {
-                        id=id-songs.size();
+                    if(SongIndex==songs.size()-1){
+                        SongIndex=0;
                     }
                     else{
-                        id=id+1;
+                        SongIndex++;
 
                     }
                     nextSong();
@@ -94,7 +103,13 @@ public class MusicPlayerActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try {
-                    id=id-1;
+                    if(SongIndex==0){
+                        SongIndex=songs.size()-1;
+                    }
+                    else{
+                        SongIndex--;
+
+                    }
                     previousSong();
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -103,15 +118,15 @@ public class MusicPlayerActivity extends AppCompatActivity {
         });
 
     }
-    public void playSong(long id) {
+    public void playSong(int SongIndex) {
 
         mediaPlayer = new MediaPlayer();
         mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-        SongDao songDao = SoundWaveDatabase.getInstance(this).songDao();
-        Song song=songDao.getID(id);
+        Song song = songs.get(SongIndex);
+        String title = song.getTitle();
 
             try {
-            afd = getApplicationContext().getAssets().openFd(song.getTitle());
+            afd = getApplicationContext().getAssets().openFd(title);
             mediaPlayer.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
             afd.close();
             mediaPlayer.prepare();
@@ -138,12 +153,11 @@ public class MusicPlayerActivity extends AppCompatActivity {
             mediaPlayer.stop();
             mediaPlayer.reset();
             mediaPlayer.release();
-            SongDao songDao = SoundWaveDatabase.getInstance(this).songDao();
-            Song song=songDao.getID(id);
+            Song song = songs.get(SongIndex);
             songName.setText(song.getSongName());
             length.setText(song.getLength());
             picture.setImageResource(song.getPictureID());
-            playSong(id);
+            playSong(SongIndex);
 
         }else{
             Toast.makeText(this, "Audio not played yet", Toast.LENGTH_SHORT).show();
@@ -157,12 +171,11 @@ public class MusicPlayerActivity extends AppCompatActivity {
             mediaPlayer.stop();
             mediaPlayer.reset();
             mediaPlayer.release();
-            SongDao songDao = SoundWaveDatabase.getInstance(this).songDao();
-            Song song=songDao.getID(id);
+            Song song = songs.get(SongIndex);
             songName.setText(song.getSongName());
             length.setText(song.getLength());
             picture.setImageResource(song.getPictureID());
-            playSong(id);
+            playSong(SongIndex);
 
         }else{
             Toast.makeText(this, "Audio not played yet", Toast.LENGTH_SHORT).show();
