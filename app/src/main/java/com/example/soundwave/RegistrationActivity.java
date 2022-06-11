@@ -108,10 +108,9 @@ public class RegistrationActivity extends AppCompatActivity {
         }
         else
         {
-            Intent intent=new Intent(this, Registration2Activity.class);
-            intent.putExtra("username", username.getText().toString());
-            intent.putExtra("password", password.getText().toString());
-            intent.putExtra("email", email.getText().toString());
+            User user=new User(username.getText().toString(),email.getText().toString(),password.getText().toString());
+            SoundWaveDatabase.getInstance(this).userDao().addUser(user);
+            Intent intent=new Intent(this, LoginActivity.class);
             startActivity(intent);
         }
 

@@ -2,19 +2,23 @@ package com.example.soundwave;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.res.AssetFileDescriptor;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class MusicPlayerActivity extends AppCompatActivity {
     private ImageButton btnPlayButton,btnPauseButton,btnNextButton,btnPreviousButton;
@@ -60,9 +64,27 @@ public class MusicPlayerActivity extends AppCompatActivity {
         }
 
 
+
         playSong(SongIndex);
         btnPlayButton.setVisibility(View.INVISIBLE);
 
+        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+
+            public void onCompletion(MediaPlayer mp) {
+                try {
+                    if(SongIndex==songs.size()-1){
+                        SongIndex=0;
+                    }
+                    else{
+                        SongIndex++;
+
+                    }
+                    nextSong();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
 
 
         btnPlayButton.setOnClickListener(new View.OnClickListener() {
@@ -117,7 +139,9 @@ public class MusicPlayerActivity extends AppCompatActivity {
             }
         });
 
+
     }
+
     public void playSong(int SongIndex) {
 
         mediaPlayer = new MediaPlayer();
@@ -132,6 +156,7 @@ public class MusicPlayerActivity extends AppCompatActivity {
             mediaPlayer.prepare();
             mediaPlayer.seekTo(currentlength);
             mediaPlayer.start();
+
         } catch (IOException e){
             e.printStackTrace();
         }
@@ -149,38 +174,37 @@ public class MusicPlayerActivity extends AppCompatActivity {
     }
     public void nextSong() throws IOException {
 
-        if (mediaPlayer.isPlaying()){
             mediaPlayer.stop();
             mediaPlayer.reset();
             mediaPlayer.release();
             Song song = songs.get(SongIndex);
-            songName.setText(song.getSongName());
+            songName.setText(song.getArtist() + " - " + song.getSongName());
             length.setText(song.getLength());
             picture.setImageResource(song.getPictureID());
             playSong(SongIndex);
+            btnPlayButton.setVisibility(View.INVISIBLE);
 
-        }else{
-            Toast.makeText(this, "Audio not played yet", Toast.LENGTH_SHORT).show();
-        }
+
 
     }
 
     public void previousSong() throws IOException {
 
-        if (mediaPlayer.isPlaying()){
             mediaPlayer.stop();
             mediaPlayer.reset();
             mediaPlayer.release();
             Song song = songs.get(SongIndex);
-            songName.setText(song.getSongName());
+            songName.setText(song.getArtist() + " - " + song.getSongName());
             length.setText(song.getLength());
             picture.setImageResource(song.getPictureID());
             playSong(SongIndex);
-
-        }else{
-            Toast.makeText(this, "Audio not played yet", Toast.LENGTH_SHORT).show();
-        }
+            btnPlayButton.setVisibility(View.INVISIBLE);
 
     }
+
+
+
+
+
 
 }
