@@ -21,7 +21,7 @@ import java.util.List;
 public class MusicPlayerActivity extends AppCompatActivity {
     private ImageButton btnPlayButton,btnPauseButton,btnNextButton,btnPreviousButton;
     private MediaPlayer mediaPlayer = null;
-    private TextView songName, length;
+    private TextView songName, length,songArtist;
     private ImageView picture;
     private AssetFileDescriptor afd;
     private int currentlength;
@@ -45,10 +45,12 @@ public class MusicPlayerActivity extends AppCompatActivity {
         btnPreviousButton=findViewById(R.id.previousButton);
 
         songName=findViewById(R.id.music_player_title);
+        songArtist=findViewById(R.id.music_player_artist);
         length=findViewById(R.id.music_player_length);
         picture=findViewById(R.id.music_player_picture);
 
-        songName.setText(song.getArtist() + " - " + song.getSongName());
+        songName.setText(song.getSongName());
+        songArtist.setText(song.getArtist());
         length.setText(song.getLength());
         picture.setImageResource(song.getPictureID());
 
@@ -193,7 +195,8 @@ public class MusicPlayerActivity extends AppCompatActivity {
             mediaPlayer.reset();
             mediaPlayer.release();
             Song song = songs.get(SongIndex);
-            songName.setText(song.getArtist() + " - " + song.getSongName());
+            songName.setText(song.getSongName());
+            songArtist.setText(song.getArtist());
             length.setText(song.getLength());
             picture.setImageResource(song.getPictureID());
             currentlength = 0;
@@ -210,7 +213,8 @@ public class MusicPlayerActivity extends AppCompatActivity {
             mediaPlayer.reset();
             mediaPlayer.release();
             Song song = songs.get(SongIndex);
-            songName.setText(song.getArtist() + " - " + song.getSongName());
+            songName.setText(song.getSongName());
+            songArtist.setText(song.getArtist());
             length.setText(song.getLength());
             picture.setImageResource(song.getPictureID());
             currentlength = 0;
@@ -218,6 +222,20 @@ public class MusicPlayerActivity extends AppCompatActivity {
             btnPlayButton.setVisibility(View.INVISIBLE);
 
     }
+
+    public void stopSong()
+    {
+        mediaPlayer.stop();
+        mediaPlayer.reset();
+        mediaPlayer.release();
+        currentlength=0;
+    }
+
+    protected void onDestroy() {
+        super.onDestroy();
+        stopSong();
+    }
+
 
 
 }

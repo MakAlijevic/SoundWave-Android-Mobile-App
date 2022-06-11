@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
 
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher_soundwave"
@@ -14,18 +15,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SoundWave">
         <activity
-            android:name=".MusicPlayerActivity"
+            android:name=".MusicPlayerActivity" android:parentActivityName=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".LoginActivity" android:parentActivityName=".IntroActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".RegistrationActivity"
+            android:name=".RegistrationActivity" android:parentActivityName=".IntroActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
@@ -38,8 +39,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <receiver android:name=".Services.NotificationActionService"/>
-        <service android:name=".Services.OnClearFromRecentService"/>
 
         <meta-data
             android:name="preloaded_fonts"

@@ -34,10 +34,12 @@ public class LoginActivity extends AppCompatActivity {
            String username= user.getUsername();
            String email=user.getEmail();
            String password=user.getPassword();
+           String about=user.getAboutMe();
            Intent intent=new Intent(this, MainActivity.class);
            intent.putExtra("username",username);
            intent.putExtra("email",email);
            intent.putExtra("password",password);
+           intent.putExtra("about",about);
            startActivity(intent);
        }
 

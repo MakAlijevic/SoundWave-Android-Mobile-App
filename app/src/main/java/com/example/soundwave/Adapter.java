@@ -43,7 +43,6 @@ public class Adapter extends BaseAdapter {
         TextView songArtist = view.findViewById(R.id.SongArtist);
         TextView songName=view.findViewById(R.id.SongName);
         TextView length = view.findViewById(R.id.length);
-
         songArtist.setText(song.getArtist());
         length.setText(song.getLength());
         songName.setText(song.getSongName());
