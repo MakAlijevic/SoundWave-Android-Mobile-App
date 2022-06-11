@@ -2,23 +2,21 @@ package com.example.soundwave;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.res.AssetFileDescriptor;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class MusicPlayerActivity extends AppCompatActivity {
     private ImageButton btnPlayButton,btnPauseButton,btnNextButton,btnPreviousButton;
@@ -31,6 +29,7 @@ public class MusicPlayerActivity extends AppCompatActivity {
     private Song firstSong = null;
     private int SongIndex;
     List<Song> songs;
+    private NotificationManager notificationManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +53,11 @@ public class MusicPlayerActivity extends AppCompatActivity {
         picture.setImageResource(song.getPictureID());
 
         songs = songDao.getAll();
+
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            createChannel();
+        }
+
 
         for (Song s : songs) {
             if (s.getSongName().equals(song.getSongName())) {
@@ -142,6 +146,16 @@ public class MusicPlayerActivity extends AppCompatActivity {
 
     }
 
+    private void createChannel(){
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            NotificationChannel channel = new NotificationChannel(CreateNotification.CHANNEL_ID, "SoundWave", NotificationManager.IMPORTANCE_LOW);
+            notificationManager = getSystemService(NotificationManager.class);
+            if(notificationManager != null){
+                notificationManager.createNotificationChannel(channel);
+            }
+        }
+    }
+
     public void playSong(int SongIndex) {
 
         mediaPlayer = new MediaPlayer();
@@ -156,6 +170,7 @@ public class MusicPlayerActivity extends AppCompatActivity {
             mediaPlayer.prepare();
             mediaPlayer.seekTo(currentlength);
             mediaPlayer.start();
+            CreateNotification.createNotification(MusicPlayerActivity.this, songs.get(SongIndex), R.drawable.ic_baseline_pause_24,1, songs.size()-1);
 
         } catch (IOException e){
             e.printStackTrace();
@@ -181,6 +196,7 @@ public class MusicPlayerActivity extends AppCompatActivity {
             songName.setText(song.getArtist() + " - " + song.getSongName());
             length.setText(song.getLength());
             picture.setImageResource(song.getPictureID());
+            currentlength = 0;
             playSong(SongIndex);
             btnPlayButton.setVisibility(View.INVISIBLE);
 
@@ -197,14 +213,11 @@ public class MusicPlayerActivity extends AppCompatActivity {
             songName.setText(song.getArtist() + " - " + song.getSongName());
             length.setText(song.getLength());
             picture.setImageResource(song.getPictureID());
+            currentlength = 0;
             playSong(SongIndex);
             btnPlayButton.setVisibility(View.INVISIBLE);
 
     }
-
-
-
-
 
 
 }
