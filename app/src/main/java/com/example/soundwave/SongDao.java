@@ -13,7 +13,7 @@ public interface SongDao {
     @Query("SELECT * FROM Song")
     List<Song> getAll();
 
-    @Query("SELECT * FROM Song LIMIT 3")
+    @Query("SELECT * FROM Song LIMIT 5")
     List<Song> getFiveSongs();
 
     @Insert

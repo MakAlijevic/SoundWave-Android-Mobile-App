@@ -25,6 +25,7 @@ public class HomeFragment extends Fragment {
     private TextView welcomeUsername,songName1,songName2,songName3;
     private ImageButton next,prev,playButton1, playButton2,playButton3;
     private ListView listView;
+    private SongDao songDao=SoundWaveDatabase.getInstance(getContext()).songDao();
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v= inflater.inflate(R.layout.fragment_home, container,false);
         viewFlipper =v.findViewById(R.id.simpleViewFlipper);
@@ -64,24 +65,30 @@ public class HomeFragment extends Fragment {
         playButton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Song song=songDao.getSong("Harry Styles - As It Was.mp3");
                 Intent intent = new Intent(getContext(), MusicPlayerActivity.class);
-                intent.putExtra("title", "Dua Lipa - Levitating");
+                intent.putExtra("id",song.getId());
+                intent.putExtra("title", song.getTitle());
                 startActivity(intent);
             }
         });
         playButton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Song song=songDao.getSong("Dua Lipa - Levitating.mp3");
                 Intent intent = new Intent(getContext(), MusicPlayerActivity.class);
-                intent.putExtra("title", "Charlie Puth - Light Switch");
+                intent.putExtra("id",song.getId());
+                intent.putExtra("title", song.getTitle());
                 startActivity(intent);
             }
         });
         playButton3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Song song=songDao.getSong("Ed Sheeran - Shivers.mp3");
                 Intent intent = new Intent(getContext(), MusicPlayerActivity.class);
-                intent.putExtra("title", "Ed Sheeran - Shivers");
+                intent.putExtra("id",song.getId());
+                intent.putExtra("title", song.getTitle());
                 startActivity(intent);
             }
         });

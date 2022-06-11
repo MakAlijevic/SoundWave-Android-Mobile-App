@@ -11,8 +11,6 @@ import android.widget.Toast;
 public class LoginActivity extends AppCompatActivity {
 
     EditText username,password;
-    //private String photo;
-    private String aboutMe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,8 +18,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         username=findViewById(R.id.username);
         password=findViewById(R.id.password);
-        //photo= getIntent().getStringExtra("profilePhoto");
-        String aboutMe=getIntent().getStringExtra("aboutme");
+
     }
     public void LogIn(View v)
     {

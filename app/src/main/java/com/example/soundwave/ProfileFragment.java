@@ -2,6 +2,7 @@ package com.example.soundwave;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
@@ -25,14 +26,12 @@ import androidx.fragment.app.Fragment;
 public class ProfileFragment extends Fragment {
     private TextView usernamelarge;
     private EditText about,username,email;
-    private Button save,cancel,photo,logout;
-    private ImageView profilePicture;
+    private Button save,cancel,logout;
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v= inflater.inflate(R.layout.fragment_profile, container,false);
         MainActivity activity= (MainActivity) getActivity();
         String getUsername = activity.getUsername();
         String getEmail = activity.getEmail();
-       // String getprofilePicture=activity.getProfilePicture();
         String getPassword=activity.getPassword();
         ImageView edit = (ImageView) v.findViewById(R.id.edit);
         about=(EditText) v.findViewById(R.id.aboutinput);
@@ -43,13 +42,8 @@ public class ProfileFragment extends Fragment {
         usernamelarge.setText(getUsername);
         email=(EditText) v.findViewById(R.id.emailinput);
         email.setText(getEmail);
-     //   Context context = profilePicture.getContext();
-       // int id = context.getResources().getIdentifier("getprofilePicture", "drawable", context.getPackageName());
-       // Drawable drawable = getResources().getDrawable(id);
-       // profilePicture.setImageDrawable(drawable);
         save=(Button) v.findViewById(R.id.buttonsave);
         cancel=(Button) v.findViewById(R.id.buttoncancel);
-        photo=(Button) v.findViewById(R.id.buttonphoto);
         edit.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -61,7 +55,6 @@ public class ProfileFragment extends Fragment {
                 email.setEnabled(true);
                 save.setVisibility(save.VISIBLE);
                 cancel.setVisibility(cancel.VISIBLE);
-                photo.setVisibility(photo.VISIBLE);
                 logout.setVisibility(logout.INVISIBLE);
             }
         });
@@ -73,7 +66,6 @@ public class ProfileFragment extends Fragment {
                 email.setEnabled(false);
                 save.setVisibility(save.INVISIBLE);
                 cancel.setVisibility(cancel.INVISIBLE);
-                photo.setVisibility(photo.INVISIBLE);
                 logout.setVisibility(logout.VISIBLE);
             }
         });
@@ -91,7 +83,6 @@ public class ProfileFragment extends Fragment {
                 about.setText(about.getText().toString());
                 save.setVisibility(save.INVISIBLE);
                 cancel.setVisibility(cancel.INVISIBLE);
-                photo.setVisibility(photo.INVISIBLE);
                 logout.setVisibility(logout.VISIBLE);
             }
         });
