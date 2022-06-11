@@ -3,7 +3,6 @@ package com.example.soundwave;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
-import androidx.room.Update;
 
 import java.util.List;
 
@@ -13,7 +12,7 @@ public interface SongDao {
     @Query("SELECT * FROM Song")
     List<Song> getAll();
 
-    @Query("SELECT * FROM Song LIMIT 5")
+    @Query("SELECT * FROM Song ORDER BY RANDOM() LIMIT 5;")
     List<Song> getFiveSongs();
 
     @Insert

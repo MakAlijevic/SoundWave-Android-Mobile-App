@@ -1,39 +1,29 @@
 package com.example.soundwave;
 
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.view.KeyCharacterMap;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
-
-import androidx.annotation.MainThread;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 public class ProfileFragment extends Fragment {
     private TextView usernamelarge;
     private EditText about,username,email;
-    private Button save,cancel,logout;
+    private Button save,cancel,logout,edit;
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v= inflater.inflate(R.layout.fragment_profile, container,false);
         MainActivity activity= (MainActivity) getActivity();
         String getUsername = activity.getUsername();
         String getEmail = activity.getEmail();
         String getPassword=activity.getPassword();
-        ImageView edit = (ImageView) v.findViewById(R.id.edit);
+        String getAbout=activity.getAbout();
+        edit = (Button) v.findViewById(R.id.edit);
         about=(EditText) v.findViewById(R.id.aboutinput);
         username=(EditText) v.findViewById(R.id.usernameinput);
         usernamelarge=(TextView) v.findViewById(R.id.textView8);
@@ -44,6 +34,8 @@ public class ProfileFragment extends Fragment {
         email.setText(getEmail);
         save=(Button) v.findViewById(R.id.buttonsave);
         cancel=(Button) v.findViewById(R.id.buttoncancel);
+        about.setText(getAbout);
+
         edit.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -84,6 +76,9 @@ public class ProfileFragment extends Fragment {
                 save.setVisibility(save.INVISIBLE);
                 cancel.setVisibility(cancel.INVISIBLE);
                 logout.setVisibility(logout.VISIBLE);
+                about.setEnabled(false);
+                username.setEnabled(false);
+                email.setEnabled(false);
             }
         });
         logout.setOnClickListener(new View.OnClickListener() {
@@ -97,6 +92,5 @@ public class ProfileFragment extends Fragment {
 
 
     }
-
 
 }

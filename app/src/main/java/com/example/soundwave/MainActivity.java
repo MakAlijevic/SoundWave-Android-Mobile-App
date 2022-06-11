@@ -4,11 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
+
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -20,7 +19,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         bottomNavigationView = findViewById(R.id.bottomnavigationview);
         viewPager = findViewById(R.id.viewpager);
@@ -55,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
         viewPagerAdapter.addFragment(new ProfileFragment());
         viewPager.setAdapter(viewPagerAdapter);
     }
-
 
 
     private BottomNavigationView.OnNavigationItemSelectedListener onNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -95,6 +92,11 @@ public class MainActivity extends AppCompatActivity {
     {
         String password;
         return password=getIntent().getStringExtra("password");
+    }
+    public String getAbout()
+    {
+        String about;
+        return about=getIntent().getStringExtra("about");
     }
 
 

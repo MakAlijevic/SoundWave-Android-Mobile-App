@@ -87,7 +87,7 @@
         android:fontFamily="@font/play"
         android:onClick="setUpProfile"
         android:shadowColor="#000000"
-        android:text="Next"
+        android:text="Register"
         android:textColor="#FFFFFF"
         android:textColorHighlight="#16506A"
         android:textSize="20sp"
