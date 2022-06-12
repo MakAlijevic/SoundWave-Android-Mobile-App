@@ -2,6 +2,7 @@ package com.example.soundwave;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.res.AssetFileDescriptor;
@@ -9,19 +10,23 @@ import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
-public class MusicPlayerActivity extends AppCompatActivity {
+public class MusicPlayerActivity extends AppCompatActivity{
     private ImageButton btnPlayButton,btnPauseButton,btnNextButton,btnPreviousButton;
     private MediaPlayer mediaPlayer = null;
-    private TextView songName, length,songArtist;
+    private TextView songName, length,songArtist, currentTime;
+    private SeekBar seekBar;
     private ImageView picture;
     private AssetFileDescriptor afd;
     private int currentlength;
@@ -48,11 +53,15 @@ public class MusicPlayerActivity extends AppCompatActivity {
         songArtist=findViewById(R.id.music_player_artist);
         length=findViewById(R.id.music_player_length);
         picture=findViewById(R.id.music_player_picture);
+        currentTime = findViewById(R.id.music_player_current_time);
+        seekBar = findViewById(R.id.seekBar);
 
         songName.setText(song.getSongName());
         songArtist.setText(song.getArtist());
         length.setText(song.getLength());
         picture.setImageResource(song.getPictureID());
+
+        songName.setSelected(true);
 
         songs = songDao.getAll();
 
@@ -69,7 +78,35 @@ public class MusicPlayerActivity extends AppCompatActivity {
             }
         }
 
+        MusicPlayerActivity.this.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if(mediaPlayer!=null){
+                    seekBar.setProgress(mediaPlayer.getCurrentPosition());
+                    currentTime.setText(convertToMMSS(mediaPlayer.getCurrentPosition()+""));
+                }
+                new Handler().postDelayed(this,100);
+            }
+        });
 
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                if(mediaPlayer!=null && b){
+                    mediaPlayer.seekTo(i);
+                }
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
 
         playSong(SongIndex);
         btnPlayButton.setVisibility(View.INVISIBLE);
@@ -164,6 +201,7 @@ public class MusicPlayerActivity extends AppCompatActivity {
         mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
         Song song = songs.get(SongIndex);
         String title = song.getTitle();
+        mediaPlayer.reset();
 
             try {
             afd = getApplicationContext().getAssets().openFd(title);
@@ -172,6 +210,8 @@ public class MusicPlayerActivity extends AppCompatActivity {
             mediaPlayer.prepare();
             mediaPlayer.seekTo(currentlength);
             mediaPlayer.start();
+            seekBar.setProgress(0);
+            seekBar.setMax(mediaPlayer.getDuration());
             CreateNotification.createNotification(MusicPlayerActivity.this, songs.get(SongIndex), R.drawable.ic_baseline_pause_24,1, songs.size()-1);
 
         } catch (IOException e){
@@ -223,6 +263,14 @@ public class MusicPlayerActivity extends AppCompatActivity {
 
     }
 
+    @SuppressLint("DefaultLocale")
+    public static String convertToMMSS(String duration){
+        Long millis = Long.parseLong(duration);
+        return String.format("%02d:%02d",
+                TimeUnit.MILLISECONDS.toMinutes(millis) % TimeUnit.HOURS.toMinutes(1),
+                TimeUnit.MILLISECONDS.toSeconds(millis) % TimeUnit.MINUTES.toSeconds(1));
+    }
+
     public void stopSong()
     {
         mediaPlayer.stop();
@@ -235,7 +283,4 @@ public class MusicPlayerActivity extends AppCompatActivity {
         super.onDestroy();
         stopSong();
     }
-
-
-
 }
