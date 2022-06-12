@@ -27,8 +27,9 @@ public class LoginActivity extends AppCompatActivity {
 
         if (user==null)
          {
-            Toast toast= Toast.makeText(this,"User doesnt exist!",Toast.LENGTH_LONG);
+            Toast toast= Toast.makeText(this,"User doesnt exist or wrong password!",Toast.LENGTH_LONG);
             toast.show();
+            password.setText("");
          }
         else
          {

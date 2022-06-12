@@ -1,5 +1,8 @@
 package com.example.soundwave;
 
+import static java.lang.Thread.currentThread;
+import static java.lang.Thread.sleep;
+
 import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.app.NotificationChannel;
@@ -32,7 +35,7 @@ public class MusicPlayerActivity extends AppCompatActivity{
     private long id;
     private Song firstSong = null;
     private int SongIndex;
-    List<Song> songs;
+    private List<Song> songs;
     private NotificationManager notificationManager;
 
     @Override
@@ -58,7 +61,6 @@ public class MusicPlayerActivity extends AppCompatActivity{
         songArtist.setText(song.getArtist());
         length.setText(song.getLength());
         picture.setImageResource(song.getPictureID());
-        //songName.setSelected(true);
         songs = songDao.getAll();
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
@@ -74,9 +76,31 @@ public class MusicPlayerActivity extends AppCompatActivity{
         MusicPlayerActivity.this.runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                if(mediaPlayer!=null){
-                    seekBar.setProgress(mediaPlayer.getCurrentPosition());
-                    currentTime.setText(convertToMMSS(mediaPlayer.getCurrentPosition()+""));
+                if(mediaPlayer!=null && currentlength < mediaPlayer.getDuration()){
+                    try {
+                        sleep(100);
+                        seekBar.setProgress(mediaPlayer.getCurrentPosition());
+                        currentTime.setText(convertToMMSS(mediaPlayer.getCurrentPosition()+""));
+                        Thread t = currentThread();
+                        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                            public void onCompletion(MediaPlayer mp) {
+                                try {
+                                    if(SongIndex==songs.size()-1){
+                                        SongIndex=0;
+                                    }
+                                    else{
+                                        SongIndex++;
+
+                                    }
+                                    nextSong();
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        });
+                    } catch (InterruptedException e) {
+                        return;
+                    }
                 }
                 new Handler().postDelayed(this,100);
             }
@@ -99,22 +123,6 @@ public class MusicPlayerActivity extends AppCompatActivity{
         playSong(SongIndex);
         btnPlayButton.setVisibility(View.INVISIBLE);
 
-        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            public void onCompletion(MediaPlayer mp) {
-                try {
-                    if(SongIndex==songs.size()-1){
-                        SongIndex=0;
-                    }
-                    else{
-                        SongIndex++;
-
-                    }
-                    nextSong();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
 
         btnPlayButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -201,9 +209,6 @@ public class MusicPlayerActivity extends AppCompatActivity{
         if (mediaPlayer.isPlaying()){
             mediaPlayer.pause();
             currentlength=mediaPlayer.getCurrentPosition();
-
-        }else{
-            Toast.makeText(this, "Audio not played yet", Toast.LENGTH_SHORT).show();
         }
     }
     public void nextSong() throws IOException {
@@ -240,15 +245,9 @@ public class MusicPlayerActivity extends AppCompatActivity{
                 TimeUnit.MILLISECONDS.toMinutes(millis) % TimeUnit.HOURS.toMinutes(1),
                 TimeUnit.MILLISECONDS.toSeconds(millis) % TimeUnit.MINUTES.toSeconds(1));
     }
-    public void stopSong()
-    {
-        mediaPlayer.stop();
-        mediaPlayer.reset();
-        mediaPlayer.release();
-        currentlength=0;
-    }
     protected void onDestroy() {
         super.onDestroy();
-        stopSong();
+        pauseSong();
+        currentThread().interrupt();
     }
 }
