@@ -81,7 +81,6 @@ public class MusicPlayerActivity extends AppCompatActivity{
                         sleep(100);
                         seekBar.setProgress(mediaPlayer.getCurrentPosition());
                         currentTime.setText(convertToMMSS(mediaPlayer.getCurrentPosition()+""));
-                        Thread t = currentThread();
                         mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                             public void onCompletion(MediaPlayer mp) {
                                 try {
@@ -247,7 +246,9 @@ public class MusicPlayerActivity extends AppCompatActivity{
     }
     protected void onDestroy() {
         super.onDestroy();
-        pauseSong();
+        if(mediaPlayer.isPlaying()) {
+            pauseSong();
+        }
         currentThread().interrupt();
     }
 }

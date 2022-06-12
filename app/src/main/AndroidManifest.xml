@@ -16,7 +16,8 @@
         android:theme="@style/Theme.SoundWave">
         <activity
             android:name=".MusicPlayerActivity" android:parentActivityName=".MainActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".MainActivity"
             android:exported="false"
