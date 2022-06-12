@@ -13,9 +13,11 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 public class ProfileFragment extends Fragment {
+
     private TextView usernamelarge;
     private EditText about,username,email;
     private Button save,cancel,logout,edit;
+
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v= inflater.inflate(R.layout.fragment_profile, container,false);
         MainActivity activity= (MainActivity) getActivity();
@@ -41,7 +43,6 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View v)
             {
-
                 about.setEnabled(true);
                 username.setEnabled(true);
                 email.setEnabled(true);
@@ -88,9 +89,8 @@ public class ProfileFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
         return v;
-
-
     }
 
 }

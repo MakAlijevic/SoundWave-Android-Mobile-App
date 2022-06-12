@@ -1,7 +1,6 @@
 package com.example.soundwave;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -17,12 +16,12 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class MusicPlayerActivity extends AppCompatActivity{
+
     private ImageButton btnPlayButton,btnPauseButton,btnNextButton,btnPreviousButton;
     private MediaPlayer mediaPlayer = null;
     private TextView songName, length,songArtist, currentTime;
@@ -48,7 +47,6 @@ public class MusicPlayerActivity extends AppCompatActivity{
         btnPauseButton= findViewById(R.id.pauseButton1);
         btnNextButton=findViewById(R.id.nextButton);
         btnPreviousButton=findViewById(R.id.previousButton);
-
         songName=findViewById(R.id.music_player_title);
         songArtist=findViewById(R.id.music_player_artist);
         length=findViewById(R.id.music_player_length);
@@ -60,16 +58,12 @@ public class MusicPlayerActivity extends AppCompatActivity{
         songArtist.setText(song.getArtist());
         length.setText(song.getLength());
         picture.setImageResource(song.getPictureID());
-
-        songName.setSelected(true);
-
+        //songName.setSelected(true);
         songs = songDao.getAll();
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             createChannel();
         }
-
-
         for (Song s : songs) {
             if (s.getSongName().equals(song.getSongName())) {
                 Song firstSong = s;
@@ -77,7 +71,6 @@ public class MusicPlayerActivity extends AppCompatActivity{
                 break;
             }
         }
-
         MusicPlayerActivity.this.runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -88,7 +81,6 @@ public class MusicPlayerActivity extends AppCompatActivity{
                 new Handler().postDelayed(this,100);
             }
         });
-
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
@@ -96,15 +88,11 @@ public class MusicPlayerActivity extends AppCompatActivity{
                     mediaPlayer.seekTo(i);
                 }
             }
-
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
-
             }
-
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-
             }
         });
 
@@ -112,7 +100,6 @@ public class MusicPlayerActivity extends AppCompatActivity{
         btnPlayButton.setVisibility(View.INVISIBLE);
 
         mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-
             public void onCompletion(MediaPlayer mp) {
                 try {
                     if(SongIndex==songs.size()-1){
@@ -129,7 +116,6 @@ public class MusicPlayerActivity extends AppCompatActivity{
             }
         });
 
-
         btnPlayButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -137,14 +123,11 @@ public class MusicPlayerActivity extends AppCompatActivity{
                 btnPlayButton.setVisibility(View.INVISIBLE);
             }
         });
-
         btnPauseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 pauseSong();
                 btnPlayButton.setVisibility(View.VISIBLE);
-
-
             }
         });
         btnNextButton.setOnClickListener(new View.OnClickListener() {
@@ -156,7 +139,6 @@ public class MusicPlayerActivity extends AppCompatActivity{
                     }
                     else{
                         SongIndex++;
-
                     }
                     nextSong();
                 } catch (IOException e) {
@@ -173,7 +155,6 @@ public class MusicPlayerActivity extends AppCompatActivity{
                     }
                     else{
                         SongIndex--;
-
                     }
                     previousSong();
                 } catch (IOException e) {
@@ -181,7 +162,6 @@ public class MusicPlayerActivity extends AppCompatActivity{
                 }
             }
         });
-
 
     }
 
@@ -196,7 +176,6 @@ public class MusicPlayerActivity extends AppCompatActivity{
     }
 
     public void playSong(int SongIndex) {
-
         mediaPlayer = new MediaPlayer();
         mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
         Song song = songs.get(SongIndex);
@@ -214,12 +193,11 @@ public class MusicPlayerActivity extends AppCompatActivity{
             seekBar.setMax(mediaPlayer.getDuration());
             CreateNotification.createNotification(MusicPlayerActivity.this, songs.get(SongIndex), R.drawable.ic_baseline_pause_24,1, songs.size()-1);
 
-        } catch (IOException e){
+            } catch (IOException e){
             e.printStackTrace();
         }
     }
     public void pauseSong(){
-
         if (mediaPlayer.isPlaying()){
             mediaPlayer.pause();
             currentlength=mediaPlayer.getCurrentPosition();
@@ -227,10 +205,8 @@ public class MusicPlayerActivity extends AppCompatActivity{
         }else{
             Toast.makeText(this, "Audio not played yet", Toast.LENGTH_SHORT).show();
         }
-
     }
     public void nextSong() throws IOException {
-
             mediaPlayer.stop();
             mediaPlayer.reset();
             mediaPlayer.release();
@@ -242,13 +218,8 @@ public class MusicPlayerActivity extends AppCompatActivity{
             currentlength = 0;
             playSong(SongIndex);
             btnPlayButton.setVisibility(View.INVISIBLE);
-
-
-
     }
-
     public void previousSong() throws IOException {
-
             mediaPlayer.stop();
             mediaPlayer.reset();
             mediaPlayer.release();
@@ -260,7 +231,6 @@ public class MusicPlayerActivity extends AppCompatActivity{
             currentlength = 0;
             playSong(SongIndex);
             btnPlayButton.setVisibility(View.INVISIBLE);
-
     }
 
     @SuppressLint("DefaultLocale")
@@ -270,7 +240,6 @@ public class MusicPlayerActivity extends AppCompatActivity{
                 TimeUnit.MILLISECONDS.toMinutes(millis) % TimeUnit.HOURS.toMinutes(1),
                 TimeUnit.MILLISECONDS.toSeconds(millis) % TimeUnit.MINUTES.toSeconds(1));
     }
-
     public void stopSong()
     {
         mediaPlayer.stop();
@@ -278,7 +247,6 @@ public class MusicPlayerActivity extends AppCompatActivity{
         mediaPlayer.release();
         currentlength=0;
     }
-
     protected void onDestroy() {
         super.onDestroy();
         stopSong();
