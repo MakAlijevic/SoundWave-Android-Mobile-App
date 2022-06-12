@@ -1,10 +1,8 @@
 package com.example.soundwave;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.preference.EditTextPreference;
 import android.view.View;
 import android.widget.EditText;
 
@@ -20,9 +18,7 @@ public class RegistrationActivity extends AppCompatActivity {
         email=findViewById(R.id.email);
         password=findViewById(R.id.password);
         confirmpassword=findViewById(R.id.confirmpassword);
-
     }
-
 
     private Boolean validateUsername() {
         String validate = username.getText().toString();
@@ -42,7 +38,6 @@ public class RegistrationActivity extends AppCompatActivity {
             return true;
         }
     }
-
     private Boolean validateEmail() {
         String validate = email.getText().toString();
         String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
@@ -58,7 +53,6 @@ public class RegistrationActivity extends AppCompatActivity {
             return true;
         }
     }
-
     private Boolean validatePassword() {
         String validate = password.getText().toString();
         String passwordVal = "^" +
@@ -96,10 +90,7 @@ public class RegistrationActivity extends AppCompatActivity {
             confirmpassword.setError(null);
             return true;
         }
-
     }
-
-
 
     public void setUpProfile(View view) {
 
@@ -113,6 +104,6 @@ public class RegistrationActivity extends AppCompatActivity {
             Intent intent=new Intent(this, LoginActivity.class);
             startActivity(intent);
         }
+    }
 
 }
-    }

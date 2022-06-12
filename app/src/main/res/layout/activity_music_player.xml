@@ -35,13 +35,13 @@
         android:id="@+id/music_player_length"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="5dp"
         android:fontFamily="@font/play"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.815"
+        app:layout_constraintHorizontal_bias="0.851"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/music_player_artist" />
+        app:layout_constraintTop_toBottomOf="@+id/seekBar" />
 
     <ImageButton
         android:id="@+id/pauseButton1"
@@ -66,7 +66,7 @@
         android:layout_marginBottom="70dp"
         android:background="@drawable/rounded_corner"
         android:src="@android:drawable/ic_media_play"
-        app:backgroundTint="#6B5E5D5D"
+        app:backgroundTint="#6B271832"
         app:backgroundTintMode="add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -79,37 +79,29 @@
         android:id="@+id/nextButton"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginEnd="112dp"
-        android:layout_marginRight="112dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp"
         android:layout_marginBottom="80dp"
         android:background="@drawable/rounded_corner"
         android:src="@android:drawable/ic_media_ff"
         app:backgroundTint="#6BA8A8A8"
         app:backgroundTintMode="add"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/button3" />
+        app:layout_constraintStart_toEndOf="@+id/pauseButton1" />
 
     <ImageButton
         android:id="@+id/previousButton"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:layout_marginStart="112dp"
-        android:layout_marginLeft="112dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginRight="15dp"
         android:layout_marginBottom="80dp"
         android:background="@drawable/rounded_corner"
         android:src="@android:drawable/ic_media_rew"
         app:backgroundTint="#6BB3B3B3"
         app:backgroundTintMode="add"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button3"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/pauseButton1" />
 
     <TextView
         android:id="@+id/music_player_artist"
@@ -129,6 +121,8 @@
         android:layout_width="290dp"
         android:layout_height="21dp"
         android:layout_marginTop="16dp"
+        android:progressTint="#BC684F95"
+        android:thumbTint="#422B6C"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
@@ -138,10 +132,10 @@
         android:id="@+id/music_player_current_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="5dp"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.17"
+        app:layout_constraintHorizontal_bias="0.145"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/music_player_artist" />
+        app:layout_constraintTop_toBottomOf="@+id/seekBar" />
 </androidx.constraintlayout.widget.ConstraintLayout>

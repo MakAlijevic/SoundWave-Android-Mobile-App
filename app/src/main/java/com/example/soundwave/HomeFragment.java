@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -25,9 +23,9 @@ public class HomeFragment extends Fragment {
     private ImageButton next,prev,playButton1, playButton2,playButton3;
     private ListView listView;
     private SongDao songDao=SoundWaveDatabase.getInstance(getContext()).songDao();
+
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v= inflater.inflate(R.layout.fragment_home, container,false);
-
         viewFlipper =v.findViewById(R.id.simpleViewFlipper);
         welcomeUsername=v.findViewById(R.id.welcomeUsername);
         MainActivity activity= (MainActivity) getActivity();
@@ -54,8 +52,6 @@ public class HomeFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
-
         playButton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -86,8 +82,6 @@ public class HomeFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
-
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -96,7 +90,6 @@ public class HomeFragment extends Fragment {
                 viewFlipper.showNext();
             }
         });
-
         prev.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

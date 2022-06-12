@@ -1,21 +1,10 @@
 package com.example.soundwave;
 
-import androidx.annotation.NonNull;
+
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-
-import android.Manifest;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.res.AssetFileDescriptor;
-import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
-
-import java.io.File;
-import java.util.List;
 
 public class IntroActivity extends AppCompatActivity {
 
@@ -36,7 +25,6 @@ public class IntroActivity extends AppCompatActivity {
         Intent registrationIntent = new Intent(this, RegistrationActivity.class);
         startActivity(registrationIntent);
     }
-
     public void LoginButton(View V) {
         Intent loginIntent = new Intent(this, LoginActivity.class);
         startActivity(loginIntent);
@@ -44,6 +32,7 @@ public class IntroActivity extends AppCompatActivity {
 
     public void loadSongs() {
         SongDao songDao = SoundWaveDatabase.getInstance(this).songDao();
+
         Song song1 = new Song("Charlie Puth - Light Switch.mp3", "Charlie Puth", "03:40", "Light Switch",R.drawable.lightswitch);
         songDao.addSong(song1);
 
@@ -92,21 +81,17 @@ public class IntroActivity extends AppCompatActivity {
         Song song16 = new Song("Labrinth - Mount Everest.mp3", "Labirinth", "02:37","Mount Everest",R.drawable.mounteverest);
         songDao.addSong(song16);
 
-
         Song song17 = new Song("Lil Nas X - THATS WHAT I WANT.mp3", "Lil Nas X", "02:24","Thats What I Want",R.drawable.thatswhatiwant);
         songDao.addSong(song17);
 
         Song song18 = new Song("Måneskin - ZITTI E BUONI.mp3", "Maneskin", "03:18","ZITTI E BUONI",R.drawable.zittiebuoni);
         songDao.addSong(song18);
 
-
         Song song19 = new Song("Megan Thee Stallion & Dua Lipa - Sweetest Pie.mp3", "Megan Thee Stallion", "03:36","Sweetest Pie",R.drawable.duamegan);
         songDao.addSong(song19);
 
-
         Song song20 = new Song("Olivia Rodrigo - deja vu.mp3", "Olivia Rodrigo", "03:51","Deja Vu",R.drawable.dejavu);
         songDao.addSong(song20);
-
 
         Song song21 = new Song("Olivia Rodrigo – drivers license.mp3", "Olivia Rodrigo", "02:57","Drivers Licence",R.drawable.driverslicence);
         songDao.addSong(song21);
@@ -137,7 +122,6 @@ public class IntroActivity extends AppCompatActivity {
 
         Song song30 = new Song("The Weeknd - Take My Breath.mp3", "The Weeknd", "03:44","Take My Breath",R.drawable.takemybreath);
         songDao.addSong(song30);
-
 
     }
 
